@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+    integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"
+    integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV"
+    crossorigin="anonymous"></script>
+  <link rel="stylesheet" href="css/style.css">
+  <script src="/js/ind.js"></script>
+  <title>My CRUD in NodeJS</title>
+</head>
+<header>
+
+  
+  <h2>Cadastro de Pilotos</h2>
+</header>
+
+<body class="bg-light">
+
+  <section>
+
+    <form action="/show" method="POST">
+      <div id="test">
+        <label for="nompl">Nome</label>
+        <input type="text" placeholder="Nome" name="name">
+
+      </div> <br>
+
+      <div>
+        <label for="sobreno">Sobrenome</label>
+        <input type="text" placeholder="Sobrenome" name="surname">
+
+      </div> <br>
+
+      <div class="form-grup">
+        <label>Informe a Idade</label>
+        <input type="idade" name="idade" placeholder="Idade">
+      </div> <br>
+
+      <div class="form-grup">
+        <label for="tiposdecarro">Selecione o carro</label>
+        <select name="carro">
+          <option value="">selecione</option>
+          <option value="Ferrari">Ferrari</option>
+          <option value="Mercedes">Mercedes</option>
+          <option value="REDBul">REDBul</option>
+          <option value="Mclarem">Mclarem</option>
+        </select>
+      </div> <br>
+
+      <div class="form-grup">
+        <label for="tiposdecarro">Selecione o tipo de Peneus</label>
+        <select id="pn" name="peneus">
+          <option value="">selecione</option>
+          <option value="duros">Duros</option>
+          <option value="medios">Medios</option>
+          <option value="macios">Macios</option>
+        </select>
+      </div> <br>
+
+      <div class="checkbox">
+        <label for="titulo">Suspensão</label><br>
+        <input class="form-check-input" type="radio" name="radio" id="dupla" value="Triangulo Duplo" checked>
+        <label class="form-check-label" for="exampleRadios1">
+          Triangulo Duplo
+        </label>
+      </div>
+
+      <div class="checkbox">
+        <input class="form-check-input" type="radio" name="radio" id="rigido" value="Eixo">
+        <label class="form-check-label" for="exampleRadios2">
+          Eixo Rigido
+        </label>
+      </div>
+
+      <div class="checkbox">
+        <input class="form-check-input" type="radio" name="radio" id="ativa" value="Suspensão ativa">
+        <label class="form-check-label" for="exampleRadios3">
+          Suspensão ativa
+        </label>
+      </div>
+
+
+
+      <button class="btn btn-success" type="submit">Cadastra</button>
+
+
+
+    </form>
+
+  </section>
+</body>
+<footer>
+
+</footer>
+
+</html>

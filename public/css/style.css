@@ -1,0 +1,42 @@
+
+body {
+  font: normal 25pt Arial;
+  color: white;
+  background-image: url("/imagem/f1.jpg");
+}
+
+header {
+  color: rgb(19, 1, 2);
+  text-align: center;
+  margin-top: 25px;
+}
+
+section {
+  margin: 10px;
+  margin-top: 65px;
+  margin-left: 400px;
+  width: 725px;
+  font-size: 20px;
+  background-color: rgb(38, 43, 43);
+}
+
+.form-check {
+  margin: 10px;
+  text-align: center;
+}
+
+button {
+  margin-top: 100px;
+  margin-left: 300px;
+}
+
+.checkbox {
+  margin-left: 60px;
+}
+
+form{
+
+margin-left: 20px;
+
+
+}

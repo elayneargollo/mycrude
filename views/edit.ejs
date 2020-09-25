@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>My CRUD in NodeJS</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+    integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+
+  <link rel="stylesheet" href="/css/editstyle.css">
+  <title>My </title>
+</head>
+
+<body>
+  <header>
+    <h2>Editar Registro</h2>
+  </header>
+  
+  <div class="fomu">
+    
+
+    <% data.forEach(function(details) { %>
+    <form class="tamanho" action="/edit/<%= details._id %>" method="POST">
+      <label>Nome</label>
+      <input type="text" value="<%= details.name %>" name="name"><br>
+      <label>Sobre Nome</label>
+      <input type="text" value="<%= details.surname %>" name="surname">
+
+      <div class="form-grup">
+        <label>Informe a Idade</label>
+        <input type="idade" value="<%= details.idade %>" name="idade">
+      </div>
+      <div class="form-grup">
+        <label>Selecione o Carro</label>
+        <select value="<%= details.carro %>" name="carro">
+          <option><%= details.carro %></option>
+          <option>Ferrari</option>
+          <option>Mercedes</option>
+          <option>REDBul</option>
+          <option>Mclarem</option>
+        </select>
+      </div>
+
+      <div class="form-grup">
+        <label>Selecione o Tipo de Peneus</label>
+        <select value="<%= details.peneus %>" id="pn" name="peneus">
+          <option><%= details.peneus %></option>
+          <option>Duros</option>
+          <option>Medios</option>
+          <option>Macios</option>
+        </select>
+      </div> <br>
+
+
+      <div class="form-grup">
+        <label for="titulo">Suspensão</label><br>
+        <input class="form-check-input" type="radio" value="<%= details.radio %>" name="radio" id="dupla" checked>
+        <label class="form-check-label" for="exampleRadios1">
+          Triangulo Duplo
+        </label>
+      </div>
+
+      <div class="form-grup">
+        <input class="form-check-input" type="radio" name="radio" value="<%= details.radio %>" id="rigido">
+        <label class="form-check-label" for="exampleRadios2">
+          Eixo Rigido
+        </label>
+      </div>
+
+      <div class="form-grup">
+        <input class="form-check-input" type="radio" value="<%= details.radio %>" name="radio" id="ativa">
+        <label class="form-check-label" for="exampleRadios3">
+          Suspensão ativa
+        </label>
+      </div>
+
+
+      <a class="btn btn-primary" href="/show">Voltar</a>
+      <button class="btn btn-success" type="submit">Salvar Alteração</button>
+    </form>
+    <% }) %>
+  </div>
+</body>
+
+</html>

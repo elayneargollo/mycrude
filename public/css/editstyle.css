@@ -1,0 +1,15 @@
+body {
+  background-image: url("/imagem/merceds.jpg");
+  width: 900px;
+  background-size: 1450px;
+  font: normal 25px Arial;
+}
+
+.fomu {
+  margin-top: 28px;
+  margin-left: 75px;
+}
+
+h2 {
+  margin-left: 600px;
+}

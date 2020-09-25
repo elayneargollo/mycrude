@@ -1,0 +1,16 @@
+body {
+  font: normal 25pt Arial;
+  color: rgb(8, 8, 46);
+  background-image: url("/imagem/ferrari.jpg");
+  background-size: 1500px;
+}
+
+h2 {
+  margin-left: 500px;
+  margin-top: 50px;
+  font: normal 50px fantasy;
+}
+
+table {
+  margin-top: 50px;
+}

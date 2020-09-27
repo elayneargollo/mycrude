@@ -17,10 +17,10 @@ client.connect().then((client)=>{
 }).catch(err => console.log(err));
 
 app.use(express.static("public"));
-app.set("views", "./views");
 app.use(bodyparser.urlencoded({ extended: true }));
-app.set("view engine", "ejs");
 app.use("/pilot", route);
+app.set("views", "./views");
+app.set("view engine", "ejs")
 
 app.listen(port, () => console.log("Server running on port " +port));
 

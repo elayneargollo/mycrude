@@ -13,63 +13,14 @@ const client = new MongoClient(uri, {useUnifiedTopology: true});
 
 client.connect().then((client)=>{
     db = client.db("test"); 
+    var cursor = db.collection("data").find();
     console.log("mongodb connected successfully....");
 }).catch(err => console.log(err));
 
 app.use(express.static("public"));
 app.use(bodyparser.urlencoded({ extended: true }));
-app.use("/pilot", route);
+app.use("/", route);
 app.set("views", "./views");
 app.set("view engine", "ejs")
 
 app.listen(port, () => console.log("Server running on port " +port));
-
-app
-  .route("/edit/:id")
-  .get((req, res) => {
-    var id = req.params.id;
-
-    db.collection("data")
-      .find(ObjectId(id))
-      .toArray((err, result) => {
-        if (err) return res.send(err);
-        res.render("edit.ejs", { data: result });
-      });
-  })
-  .post((req, res) => {
-    var id = req.params.id;
-    var name = req.body.name;
-    var surname = req.body.surname;
-    var idade = req.body.idade;
-    var carro = req.body.carro;
-    var peneus = req.body.peneus;
-    var radio = req.body.radio;
-    db.collection("data").updateOne(
-      { _id: ObjectId(id) },
-      {
-        $set: {
-          name: name,
-          surname: surname,
-          idade: idade,
-          carro: carro,
-          peneus: peneus,
-          radio: radio,
-        },
-      },
-      (err, result) => {
-        if (err) return res.send(err);
-        res.redirect("/show");
-        console.log("Atualizado no Banco de Dados");
-      }
-    );
-  });
-
-app.route("/delete/:id").get((req, res) => {
-  var id = req.params.id;
-
-  db.collection("data").deleteOne({ _id: ObjectId(id) }, (err, result) => {
-    if (err) return res.send(500, err);
-    console.log("Deletado do Banco de Dados!");
-    res.redirect("/show");
-  });
-});

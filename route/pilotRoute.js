@@ -1,24 +1,21 @@
 const express = require("express"),
-      router = express.Router();
+  app = express(),
+  ObjectId = require('mongodb').ObjectID;
 
-router.get("/", function (req, res) {
+app.get("/", function (req, res) {
   res.render("index.ejs");
 });
 
-router.get("/", (req, res) => {
-  var cursor = db.collection("data").find();
-});
-
-router.post("/show", (req, res) => {
-  db.collection("data").save(req.body, (err, result) => {
+app.post("/show", (req, res) => {
+  db.collection("data").insertOne(req.body, (err, result) => {
     if (err) return console.log(err);
-    
+
     console.log("Salvo no Banco de Dados");
     res.redirect("/show");
   });
 });
 
-router.get("/show", (req, res) => {
+app.get("/show", (req, res) => {
   db.collection("data")
     .find()
     .toArray((err, results) => {
@@ -27,4 +24,52 @@ router.get("/show", (req, res) => {
     });
 });
 
-module.exports=router;
+app.route("/delete/:id").get((req, res) => {
+  var id = req.params.id;
+
+  db.collection("data").deleteOne({ _id: ObjectId(id) }, (err, result) => {
+    if (err) return res.send(500, err);
+    console.log("Deletado do Banco de Dados!");
+    res.redirect("/show");
+  });
+});
+
+app.route("/edit/:id").get((req, res) => {
+  var id = req.params.id;
+
+  db.collection("data")
+    .find(ObjectId(id))
+    .toArray((err, result) => {
+      if (err) return res.send(err);
+      res.render("edit.ejs", { data: result });
+    });
+})
+  .post((req, res) => {
+    var id = req.params.id;
+    var name = req.body.name;
+    var surname = req.body.surname;
+    var idade = req.body.idade;
+    var carro = req.body.carro;
+    var peneus = req.body.peneus;
+    var radio = req.body.radio;
+    db.collection("data").updateOne(
+      { _id: ObjectId(id) },
+      {
+        $set: {
+          name: name,
+          surname: surname,
+          idade: idade,
+          carro: carro,
+          peneus: peneus,
+          radio: radio,
+        },
+      },
+      (err, result) => {
+        if (err) return res.send(err);
+        res.redirect("/show");
+        console.log("Atualizado no Banco de Dados");
+      }
+    );
+  });
+
+module.exports = app;
